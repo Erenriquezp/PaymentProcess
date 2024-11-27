@@ -1,13 +1,16 @@
 package ec.edu.uce.payment.models.entities;
 
-public class PayPalPayment extends Payment {
+import ec.edu.uce.payment.models.Payable;
+import ec.edu.uce.payment.models.QualifierPayment;
+import jakarta.enterprise.context.ApplicationScoped;
 
-    public PayPalPayment(String mikuNakano, double v) {
-        super(mikuNakano, v);
-    }
+@QualifierPayment("paypal")
+@ApplicationScoped
+public class PayPalPayment implements Payable {
 
     @Override
-    public void pay() {
-        System.out.println("PayPal Payment: " + super.toString());
+    public String processPayment(String account, double amount, String paymentMethod) {
+        // Logic to process payment via PayPal
+        return "Payment of " + amount + " processed via PayPal from account " + account;
     }
 }

@@ -9,7 +9,7 @@
 
         <class>ec.edu.uce.payment.models.entities.CreditCardPayment</class>
         <class>ec.edu.uce.payment.models.entities.PayPalPayment</class>
-        <class>ec.edu.uce.payment.models.entities.TransferPayment</class>
+        <class>ec.edu.uce.payment.models.entities.BankTransferPayment</class>
 
         <properties>
             <!-- Configuración JDBC para PostgreSQL -->

@@ -4,13 +4,13 @@ import ec.edu.uce.payment.models.Payable;
 import ec.edu.uce.payment.models.QualifierPayment;
 import jakarta.enterprise.context.ApplicationScoped;
 
-@QualifierPayment("creditCard")
+@QualifierPayment("bankTransfer")
 @ApplicationScoped
-public class CreditCardPayment implements Payable {
+public class BankTransferPayment implements Payable {
 
     @Override
     public String processPayment(String account, double amount, String paymentMethod) {
-        // Logic to process payment via credit card
-        return "Payment of " + amount + " processed via Credit Card from account " + account;
+        // Logic to process payment via bank transfer
+        return "Payment of " + amount + " processed via Bank Transfer from account " + account;
     }
 }
