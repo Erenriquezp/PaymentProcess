@@ -1,7 +1,7 @@
 package ec.edu.uce.payment.services;
 
-import ec.edu.uce.payment.models.Payable;
-import ec.edu.uce.payment.models.QualifierPayment;
+import ec.edu.uce.payment.configs.Payable;
+import ec.edu.uce.payment.configs.QualifierPayment;
 import jakarta.inject.Inject;
 
 public class PaymentService {
