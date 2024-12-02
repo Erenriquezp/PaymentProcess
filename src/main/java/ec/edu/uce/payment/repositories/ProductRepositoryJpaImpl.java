@@ -8,7 +8,6 @@ import jakarta.persistence.EntityManager;
 
 import java.util.List;
 
-@RepositoryJpa
 @Repository
 public class ProductRepositoryJpaImpl implements CrudRepository<Product>{
 
@@ -18,7 +17,6 @@ public class ProductRepositoryJpaImpl implements CrudRepository<Product>{
     @Override
     public List<Product> list() throws Exception {
         return em.createQuery("SELECT p FROM Product p", Product.class).getResultList();
-//        return em.createQuery("SELECT p FROM Product p left outer join fetch p.category", Product.class).getResultList();
     }
 
     @Override

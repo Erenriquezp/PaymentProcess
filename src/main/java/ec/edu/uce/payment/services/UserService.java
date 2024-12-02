@@ -2,7 +2,7 @@ package ec.edu.uce.payment.services;
 
 import ec.edu.uce.payment.configs.Service;
 import ec.edu.uce.payment.interceptors.TransactionalJpa;
-import ec.edu.uce.payment.models.entities.Product;
+import ec.edu.uce.payment.models.entities.User;
 import ec.edu.uce.payment.repositories.CrudRepository;
 import jakarta.inject.Inject;
 
@@ -11,13 +11,13 @@ import java.util.Optional;
 
 @Service
 @TransactionalJpa
-public class ProductServiceImpl implements CrudService<Product> {
+public class UserService implements CrudService<User> {
 
     @Inject
-    private CrudRepository<Product> repository;
+    private CrudRepository<User> repository;
 
     @Override
-    public List<Product> list() {
+    public List<User> list() {
         try {
             return repository.list();
         } catch (Exception e) {
@@ -26,7 +26,7 @@ public class ProductServiceImpl implements CrudService<Product> {
     }
 
     @Override
-    public Optional<Product> findById(Long id) {
+    public Optional<User> findById(Long id) {
         try {
             return Optional.ofNullable(repository.byId(id));
         } catch (Exception e) {
@@ -35,9 +35,9 @@ public class ProductServiceImpl implements CrudService<Product> {
     }
 
     @Override
-    public void save(Product product) {
+    public void save(User user) {
         try {
-            repository.save(product);
+            repository.save(user);
         } catch (Exception e) {
             throw new ServiceJdbcException(e.getMessage(), e.getCause());
         }
@@ -53,12 +53,11 @@ public class ProductServiceImpl implements CrudService<Product> {
     }
 
     @Override
-    public void update(Product product) {
+    public void update(User user) {
         try {
-            repository.update(product);
+            repository.update(user);
         } catch (Exception e) {
-            throw new ServiceJdbcException("Error updating product: " + product.getName(), e);
+            throw new ServiceJdbcException("Error updating user: " + user.getName(), e);
         }
     }
-
 }

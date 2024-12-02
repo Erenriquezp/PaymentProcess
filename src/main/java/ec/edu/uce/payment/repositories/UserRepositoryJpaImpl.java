@@ -7,9 +7,8 @@ import jakarta.persistence.EntityManager;
 
 import java.util.List;
 
-@RepositoryJpa
 @Repository
-public class UserRepositoryJpaImpl implements UserRepository{
+public class UserRepositoryJpaImpl implements CrudRepository<User> {
     @Inject
     private EntityManager em;
 
@@ -34,18 +33,14 @@ public class UserRepositoryJpaImpl implements UserRepository{
 
     @Override
     public void update(User user) throws Exception {
-
+        this.save(user);
     }
 
     @Override
     public void delete(Long id) throws Exception {
-
-    }
-
-    @Override
-    public User byUsername(String username) throws Exception {
-        return em.createQuery("FROM User u WHERE u.username = :username", User.class)
-                .setParameter("username", username)
-                .getSingleResult();
+        User user = this.byId(id);
+        if (user != null) {
+            em.remove(user);
+        }
     }
 }
