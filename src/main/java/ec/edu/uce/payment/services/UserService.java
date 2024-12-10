@@ -1,7 +1,7 @@
 package ec.edu.uce.payment.services;
 
-import ec.edu.uce.payment.configs.Service;
-import ec.edu.uce.payment.interceptors.TransactionalJpa;
+import ec.edu.uce.payment.annotations.Service;
+import ec.edu.uce.payment.annotations.TransactionalJpa;
 import ec.edu.uce.payment.models.entities.User;
 import ec.edu.uce.payment.repositories.CrudRepository;
 import jakarta.inject.Inject;

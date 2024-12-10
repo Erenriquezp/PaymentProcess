@@ -1,5 +1,6 @@
 package ec.edu.uce.payment.interceptors;
 
+import ec.edu.uce.payment.annotations.TransactionalJpa;
 import ec.edu.uce.payment.services.ServiceJdbcException;
 import jakarta.inject.Inject;
 import jakarta.interceptor.AroundInvoke;

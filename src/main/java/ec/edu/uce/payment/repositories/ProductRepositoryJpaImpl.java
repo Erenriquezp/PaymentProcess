@@ -1,7 +1,7 @@
 package ec.edu.uce.payment.repositories;
 
 
-import ec.edu.uce.payment.configs.Repository;
+import ec.edu.uce.payment.annotations.Repository;
 import ec.edu.uce.payment.models.entities.Product;
 import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;

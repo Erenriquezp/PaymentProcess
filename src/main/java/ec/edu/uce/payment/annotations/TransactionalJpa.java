@@ -1,4 +1,4 @@
-package ec.edu.uce.payment.interceptors;
+package ec.edu.uce.payment.annotations;
 
 import jakarta.interceptor.InterceptorBinding;
 

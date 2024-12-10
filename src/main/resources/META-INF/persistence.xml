@@ -10,7 +10,8 @@
 
         <class>ec.edu.uce.payment.models.entities.User</class>
         <class>ec.edu.uce.payment.models.entities.Product</class>
-        <class>ec.edu.uce.payment.models.entities.Purchase</class>
+        <class>ec.edu.uce.payment.models.entities.Payment</class>
+        <class>ec.edu.uce.payment.models.entities.PaymentMethod</class>
 
         <properties>
             <!-- Configuración JDBC para postgresql -->
@@ -23,7 +24,7 @@
             <property name="jakarta.persistence.provider" value="org.hibernate.jpa.HibernatePersistenceProvider"/>
 
             <!-- Configuración de Hibernate -->
-<!--            <property name="hibernate.hbm2ddl.auto" value="update" /> &lt;!&ndash; Modificar si es necesario &ndash;&gt;-->
+            <property name="hibernate.hbm2ddl.auto" value="update" /> <!-- Modificar si es necesario -->
             <property name="hibernate.show_sql" value="true" />
             <property name="hibernate.format_sql" value="true" />
 

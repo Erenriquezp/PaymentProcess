@@ -2,6 +2,7 @@ package ec.edu.uce.payment.configs;
 
 import ec.edu.uce.payment.util.JpaUtil;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.RequestScoped;
 import jakarta.enterprise.inject.Disposes;
 import jakarta.enterprise.inject.Produces;
 import jakarta.persistence.EntityManager;
@@ -15,6 +16,7 @@ public class ProducerResources {
     private Logger log;
 
     @Produces
+    @RequestScoped
     private EntityManager beanEntityManager() {
         return JpaUtil.getEntityManager();
     }

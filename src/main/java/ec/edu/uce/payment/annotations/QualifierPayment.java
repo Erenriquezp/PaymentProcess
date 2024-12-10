@@ -1,4 +1,4 @@
-package ec.edu.uce.payment.configs;
+package ec.edu.uce.payment.annotations;
 
 import jakarta.inject.Qualifier;
 
