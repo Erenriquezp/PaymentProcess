@@ -21,19 +21,21 @@ public class CreditCardPayment implements Payable {
                 String.format(" - Name: %s | Price: $%.2f%n", product.getName(), product.getPrice())));
 
         return String.format(
-                "Payment processed successfully!\n" +
-                        "---------------------------------\n" +
-                        "User Details:\n" +
-                        " - Name: %s\n" +
-                        " - Email: %s\n" +
-                        "\n" +
-                        "Products:\n%s" +
-                        "\n" +
-                        "Payment Details:\n" +
-                        " - Payment Method: Credit Card\n" +
-                        " - Total Amount: $%.2f\n" +
-                        "---------------------------------\n" +
-                        "Thank you for your purchase!",
+                """
+                        Payment processed successfully!
+                        ---------------------------------
+                        User Details:
+                         - Name: %s
+                         - Email: %s
+                        
+                        Products:
+                        %s\
+                        
+                        Payment Details:
+                         - Payment Method: Credit Card
+                         - Total Amount: $%.2f
+                        ---------------------------------
+                        Thank you for your purchase!""",
                 user.getName(), user.getEmail(),
                 productDetails,
                 amount

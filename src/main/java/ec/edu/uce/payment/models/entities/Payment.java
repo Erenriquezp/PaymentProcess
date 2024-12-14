@@ -58,7 +58,6 @@ public class Payment {
     }
 
     // Getters and setters...
-
     public Long getId() {
         return id;
     }

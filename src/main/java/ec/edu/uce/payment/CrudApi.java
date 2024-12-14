@@ -16,7 +16,6 @@ import java.util.List;
 @Consumes(MediaType.APPLICATION_JSON)
 public class CrudApi {
     // CRUD operaciones para productos
-
     @Inject
     private CrudService<Product> productService;
 

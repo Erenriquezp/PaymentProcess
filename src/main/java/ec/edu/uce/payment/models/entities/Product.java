@@ -39,10 +39,7 @@ public class Product {
         this.name = name;
         this.price = price;
     }
-
-
 // Getters y setters
-
     public Long getId() {
         return id;
     }
@@ -65,22 +62,6 @@ public class Product {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
-    }
-
-//    public List<User> getUsers() {
-//        return users;
-//    }
-//
-//    public void setUsers(List<User> users) {
-//        this.users = users;
-//    }
-
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
     }
 
     @Override

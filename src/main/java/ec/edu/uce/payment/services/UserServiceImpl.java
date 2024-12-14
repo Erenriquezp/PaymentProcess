@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @Service
 @TransactionalJpa
-public class UserService implements CrudService<User> {
+public class UserServiceImpl implements CrudService<User> {
 
     @Inject
     private CrudRepository<User> repository;
