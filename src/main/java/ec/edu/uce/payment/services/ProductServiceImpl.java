@@ -60,5 +60,4 @@ public class ProductServiceImpl implements CrudService<Product> {
             throw new ServiceJdbcException("Error updating product: " + product.getName(), e);
         }
     }
-
 }

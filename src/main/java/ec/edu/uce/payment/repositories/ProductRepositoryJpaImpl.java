@@ -5,6 +5,7 @@ import ec.edu.uce.payment.annotations.Repository;
 import ec.edu.uce.payment.models.entities.Product;
 import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityNotFoundException;
 
 import java.util.List;
 
@@ -27,7 +28,13 @@ public class ProductRepositoryJpaImpl implements CrudRepository<Product>{
     @Override
     public void save(Product product) throws Exception {
         if (product.getId() != null && product.getId() > 0) {
-            em.merge(product);
+            // Verificar si el producto existe antes de hacer merge
+            Product existingProduct = em.find(Product.class, product.getId());
+            if (existingProduct != null) {
+                em.merge(product);
+            } else {
+                throw new EntityNotFoundException("Product not found for ID: " + product.getId());
+            }
         } else {
             em.persist(product);
         }

@@ -24,10 +24,11 @@ public class UserRepositoryJpaImpl implements CrudRepository<User> {
 
     @Override
     public void save(User user) throws Exception {
-        if (user.getId() != null && user.getId() > 0) {
-            em.merge(user);
+        if (user.getId() == null || user.getId() <= 0) {
+            em.persist(user);  // Persistir un nuevo usuario
         } else {
-            em.persist(user);
+            // Si el usuario ya tiene un ID, actualizamos (merge)
+            em.merge(user);
         }
     }
 

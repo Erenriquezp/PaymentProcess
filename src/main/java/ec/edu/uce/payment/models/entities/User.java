@@ -3,6 +3,7 @@ package ec.edu.uce.payment.models.entities;
 import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -24,6 +25,9 @@ public class User {
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedAt;
 
+    @OneToMany(mappedBy = "user")
+    private List<Payment> payments; // Relación 1 a N con Payment
+
     @PrePersist
     protected void onCreate() {
         createdAt = new Date();
@@ -34,8 +38,7 @@ public class User {
         updatedAt = new Date();
     }
 
-    public User() {
-    }
+    public User() {}
 
     public User(Long id, String name, String email) {
         this.id = id;

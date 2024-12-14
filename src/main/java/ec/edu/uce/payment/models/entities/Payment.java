@@ -1,9 +1,11 @@
 package ec.edu.uce.payment.models.entities;
 
 import jakarta.persistence.*;
-
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
 @Entity
 @Table(name = "payments")
 public class Payment {
@@ -14,15 +16,19 @@ public class Payment {
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    private User user; // Relación Many-to-One con User
+
+    @ManyToMany
+    @JoinTable(
+            name = "payment_products",
+            joinColumns = @JoinColumn(name = "payment_id"),
+            inverseJoinColumns = @JoinColumn(name = "product_id")
+    )
+    private List<Product> products; // Relación Many-to-Many con Product
 
     @ManyToOne
-    @JoinColumn(name = "product_id", nullable = false)
-    private Product product;
-
-//    @ManyToOne
-//    @JoinColumn(name = "payment_method_id", nullable = false)
-//    private PaymentMethod method;
+    @JoinColumn(name = "payment_method_id", nullable = false)
+    private PaymentMethod method; // Relación Many-to-One con PaymentMethod
 
     @Column(nullable = false)
     private BigDecimal amount;
@@ -33,10 +39,25 @@ public class Payment {
     @PrePersist
     protected void onCreate() {
         createdAt = new Date();
+        // Calcula el monto del pago sumando el precio de los productos
+        if (products != null) {
+            this.amount = products.stream()
+                    .map(Product::getPrice)
+                    .reduce(BigDecimal.ZERO, BigDecimal::add);
+        }
     }
 
     public Payment() {
+        this.products = new ArrayList<>();
     }
+
+    public Payment(User user, List<Product> products, PaymentMethod method) {
+        this.user = user;
+        this.products = products;
+        this.method = method;
+    }
+
+    // Getters and setters...
 
     public Long getId() {
         return id;
@@ -54,21 +75,25 @@ public class Payment {
         this.user = user;
     }
 
-    public Product getProduct() {
-        return product;
+    public List<Product> getProducts() {
+        return products;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setProducts(List<Product> products) {
+        this.products = products;
     }
 
-//    public PaymentMethod getMethod() {
-//        return method;
-//    }
-//
-//    public void setMethod(PaymentMethod method) {
-//        this.method = method;
-//    }
+    public void addProduct(Product product) {
+        this.products.add(product);
+    }
+
+    public PaymentMethod getMethod() {
+        return method;
+    }
+
+    public void setMethod(PaymentMethod method) {
+        this.method = method;
+    }
 
     public BigDecimal getAmount() {
         return amount;

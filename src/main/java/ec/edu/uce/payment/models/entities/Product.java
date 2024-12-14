@@ -2,7 +2,9 @@ package ec.edu.uce.payment.models.entities;
 
 import jakarta.persistence.*;
 
+import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -17,7 +19,10 @@ public class Product {
     private String name;
 
     @Column(nullable = false)
-    private double price;
+    private BigDecimal price;
+
+    @ManyToMany(mappedBy = "products")
+    private List<Payment> payments; // Relación Many-to-Many con Payment
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
@@ -27,14 +32,16 @@ public class Product {
         createdAt = new Date();
     }
 
-    public Product() {
-    }
+    public Product() {}
 
-    public Product(Long id, String name, double price) {
+    public Product(Long id, String name, BigDecimal price) {
         this.id = id;
         this.name = name;
         this.price = price;
     }
+
+
+// Getters y setters
 
     public Long getId() {
         return id;
@@ -52,13 +59,21 @@ public class Product {
         this.name = name;
     }
 
-    public double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
+
+//    public List<User> getUsers() {
+//        return users;
+//    }
+//
+//    public void setUsers(List<User> users) {
+//        this.users = users;
+//    }
 
     public Date getCreatedAt() {
         return createdAt;
@@ -73,11 +88,11 @@ public class Product {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Product product = (Product) o;
-        return Double.compare(price, product.price) == 0 && Objects.equals(id, product.id) && Objects.equals(name, product.name) && Objects.equals(createdAt, product.createdAt);
+        return Objects.equals(id, product.id) && Objects.equals(name, product.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, price, createdAt);
+        return Objects.hash(id, name, price);
     }
 }

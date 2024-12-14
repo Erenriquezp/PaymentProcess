@@ -6,8 +6,7 @@
 
     <persistence-unit name="jpa" transaction-type="RESOURCE_LOCAL">
 
-<!--        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>-->
-
+    <!--<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>-->
         <class>ec.edu.uce.payment.models.entities.User</class>
         <class>ec.edu.uce.payment.models.entities.Product</class>
         <class>ec.edu.uce.payment.models.entities.Payment</class>
@@ -19,17 +18,22 @@
             <property name="jakarta.persistence.jdbc.user" value="root"/>
             <property name="jakarta.persistence.jdbc.password" value="patrones123"/>
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
-            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/>
 
             <property name="jakarta.persistence.provider" value="org.hibernate.jpa.HibernatePersistenceProvider"/>
-
             <!-- Configuración de Hibernate -->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/>
             <property name="hibernate.hbm2ddl.auto" value="update" /> <!-- Modificar si es necesario -->
             <property name="hibernate.show_sql" value="true" />
             <property name="hibernate.format_sql" value="true" />
 
+            <!-- Configuración para manejo de concurrencia -->
+            <property name="hibernate.connection.isolation" value="2"/> <!-- REPEATABLE_READ -->
+            <property name="hibernate.jdbc.batch_size" value="20"/> <!-- Manejo de lotes -->
+            <property name="hibernate.cache.use_second_level_cache" value="true"/>
+            <property name="hibernate.cache.use_query_cache" value="true"/>
+
             <!-- Habilitar logging de SQL -->
-            <property name="hibernate.enable_lazy_load_no_trans" value="true" />
+            <property name="hibernate.enable_lazy_load_no_trans" value="false" />
         </properties>
     </persistence-unit>
 </persistence>
