@@ -6,14 +6,13 @@
 
     <persistence-unit name="jpa" transaction-type="RESOURCE_LOCAL">
 
-    <!--<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>-->
         <class>ec.edu.uce.payment.models.entities.User</class>
         <class>ec.edu.uce.payment.models.entities.Product</class>
         <class>ec.edu.uce.payment.models.entities.Payment</class>
         <class>ec.edu.uce.payment.models.entities.PaymentMethod</class>
 
         <properties>
-            <!-- Configuración JDBC para postgresql -->
+            <!-- Configuración JDBC para mysql -->
             <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/paymentdb"/>
             <property name="jakarta.persistence.jdbc.user" value="root"/>
             <property name="jakarta.persistence.jdbc.password" value="patrones123"/>
@@ -25,12 +24,6 @@
             <property name="hibernate.hbm2ddl.auto" value="update" /> <!-- Modificar si es necesario -->
             <property name="hibernate.show_sql" value="true" />
             <property name="hibernate.format_sql" value="true" />
-
-            <!-- Configuración para manejo de concurrencia -->
-            <property name="hibernate.connection.isolation" value="2"/> <!-- REPEATABLE_READ -->
-            <property name="hibernate.jdbc.batch_size" value="20"/> <!-- Manejo de lotes -->
-            <property name="hibernate.cache.use_second_level_cache" value="true"/>
-            <property name="hibernate.cache.use_query_cache" value="true"/>
 
             <!-- Habilitar logging de SQL -->
             <property name="hibernate.enable_lazy_load_no_trans" value="false" />

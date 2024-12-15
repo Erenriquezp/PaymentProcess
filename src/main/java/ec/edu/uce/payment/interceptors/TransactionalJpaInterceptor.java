@@ -13,6 +13,7 @@ import java.util.logging.Logger;
 @TransactionalJpa
 @Interceptor
 public class TransactionalJpaInterceptor {
+    // Interceptor en Jakarta EE para manejar transacciones de base de datos de manera automática.
 
     @Inject
     private EntityManager em;

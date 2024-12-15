@@ -6,7 +6,7 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
 public class JpaUtil {
-    // Singleton, un Entity Manager por cada request, por cada cliente que se conecte
+    // Crea una única instancia de EntityManagerFactory, y se reutiliza en toda la aplicación.
     private static final EntityManagerFactory entityManagerFactory = buildEntityManagerFactory();
 
     private static EntityManagerFactory buildEntityManagerFactory() {

@@ -9,15 +9,17 @@ import jakarta.persistence.EntityManager;
 import jakarta.inject.Inject;
 import java.util.logging.Logger;
 
-@ApplicationScoped
+@ApplicationScoped // Una única instancia de esta clase se crea durante el inicio de la aplicación y se mantiene hasta su finalización.
 public class ProducerResources {
 
-    @Inject
+    @Inject // Logger para hacer el registro de eventos
     private Logger log;
 
     @Produces
-    @RequestScoped
+    @RequestScoped // Un nuevo EntityManager será creado para cada solicitud
     private EntityManager beanEntityManager() {
+        // No es necesario invocar el método explícitamente
+        // El contenedor CDI se encarga de crear e inyectar el EntityManager cuando sea necesario.
         return JpaUtil.getEntityManager();
     }
 
