@@ -15,7 +15,7 @@ import java.util.List;
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class CrudApi {
-    // CRUD operaciones para productos
+    // CRUD operaciones para productos y usuarios
     @Inject
     private CrudService<Product> productService;
 
@@ -94,7 +94,6 @@ public class CrudApi {
     }
 
     // CRUD operaciones para usuarios
-
     @POST
     @Path("/users")
     @Consumes(MediaType.APPLICATION_JSON)
