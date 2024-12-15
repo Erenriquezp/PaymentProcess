@@ -1,10 +1,7 @@
 package ec.edu.uce.payment.services;
 
 public class ServiceJdbcException extends RuntimeException {
-    public ServiceJdbcException(String message) {
-        super(message);
-    }
-
+    // Excepción personalizada puede ser utilizada cuando se produce un error en una operación en la Base de datos
     public ServiceJdbcException(String message, Throwable cause) {
         super(message, cause);
     }
